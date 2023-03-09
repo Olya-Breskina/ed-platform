@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver_class_name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/hack
+    username: postgres
+    password: 123
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  jpa:
+    hibernate:
+      ddl-auto: 'update'
+logging:
+  level:
+    ru.podgoretskaya:DEBUG
