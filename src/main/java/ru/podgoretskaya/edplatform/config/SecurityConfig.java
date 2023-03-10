@@ -19,9 +19,10 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/admin/**").hasAuthority(UserRole.ADMIN.name())
+                                .requestMatchers("**/admin/**").hasAuthority(UserRole.ADMIN.name())
                                 .requestMatchers("/registration").permitAll()
-                                .requestMatchers("/auth","/courses/**","/lessons/**","/test/**").authenticated())
+                                .requestMatchers("/auth","/api/file/courses/**","/api/file/lessons/**","/api/file/test/**").authenticated()
+                                .requestMatchers("/api/metric/**").authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .authenticationManager(customAuthenticationManager);
         return http.build();
