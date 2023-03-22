@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  edp-db:
+    container_name: edp-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: edp
+      POSTGRES_PASSWORD: edp
+      POSTGRES_HOST: edp
+    volumes:
+      - edp-db:/db
+  edp:
+    container_name: edp
+    image: edp
+    ports:
+      - "8080:8080"
+    depends_on:
+      -  edp-db
+    environment:
+      DB_HOST: edp-db/edp
+      DB_USERNAME: edp
+      DB_PASSWORD: edp
+    volumes:
+      - edp-db:/db
+volumes:
+  edp-db:
+

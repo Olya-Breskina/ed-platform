@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("**/admin/**").hasAuthority(UserRole.ADMIN.name())
-                                .requestMatchers("/registration").permitAll()
+                                .requestMatchers("/registration","/swagger-ui/**","/v3/api-docs/**").permitAll()
                                 .requestMatchers("/auth","/api/file/courses/**","/api/file/lessons/**","/api/file/test/**").authenticated()
                                 .requestMatchers("/api/metric/**").authenticated())
                 .httpBasic(Customizer.withDefaults())
