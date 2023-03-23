@@ -15,7 +15,7 @@ public class ActivitiesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    private UsersEntity userId;
+    private UserEntity userId;
     @OneToOne
     private TestsEntity testId;
     @ManyToOne

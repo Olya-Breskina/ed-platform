@@ -29,26 +29,26 @@ public class FileController {
     private final TestService testService;
     private final MetricServise metricServise;
 
-    @PostMapping("/save/test")
+    @PostMapping("/admin/save/test")
     @Operation(summary = "загрузка материалов для тестирования, с указанием номера курса и проходного балла")
     public void saveTest(@RequestBody MultipartFile file, @RequestHeader("courseId") int courseId, @RequestHeader("threshold") int threshold) {
         testService.save(file, courseId, threshold);
 
     }
 
-    @PostMapping("/save/cours")
+    @PostMapping("/admin/save/cours")
     @Operation(summary = "загрузка курсов ")
     public void saveCours(@RequestBody CoursesDTO model) {
         coursesService.saveCoursInDB(model);
     }
 
-    @PostMapping("/save/lessons")
+    @PostMapping("/admin/save/lessons")
     @Operation(summary = "загрузка уроков ")
     public void saveLessons(@RequestBody LessonsDTO model) {
         lessonsService.saveLessonsInDB(model);
     }
 
-    @PostMapping("/save/education")
+    @PostMapping("/admin/save/education")
     @Operation(summary = "загрузка образовательных материалов, в заголовке указывается к номер урока")
     public void saveEducation(@RequestBody MultipartFile file, @RequestHeader("lessonsId") int lessonsId) {
         educationMaterialServiceImpl.save(file, lessonsId);
